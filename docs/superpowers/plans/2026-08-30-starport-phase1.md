@@ -143,11 +143,13 @@ Run: `git remote -v` 应显示 `origin`；`git log --oneline` 应有 1 条提交
 
 ```js
 import { defineConfig } from 'astro/config';
+import { loadEnv } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
-const SITE_URL = process.env.SITE_URL || 'http://localhost:4321';
-const BASE_PATH = process.env.BASE_PATH || '/';
+const env = loadEnv(process.env.NODE_ENV || 'development', process.cwd(), '');
+const SITE_URL = process.env.SITE_URL || env.SITE_URL || 'http://localhost:4321';
+const BASE_PATH = process.env.BASE_PATH || env.BASE_PATH || '/';
 
 export default defineConfig({
   site: SITE_URL,
@@ -753,7 +755,7 @@ import { getCollection, render } from 'astro:content';
 import { formatDate } from '../../lib/essays';
 
 export async function getStaticPaths() {
-  const essays = await getCollection('essays');
+  const essays = await getCollection('essays', ({ data }) => !data.draft);
   return essays.map((e) => ({ params: { slug: e.id }, props: { essay: e } }));
 }
 
@@ -903,7 +905,7 @@ git commit -m "feat: recent activity, rss, sitemap, robots"
 import http from 'node:http';
 import { createReadStream } from 'node:fs';
 import { stat } from 'node:fs/promises';
-import { join, resolve, extname, sep } from 'node:path';
+import { resolve, extname, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const PORT = Number(process.env.PORT) || 4321;
@@ -936,7 +938,9 @@ http.createServer(async (req, res) => {
     const s = await stat(file);
     if (!s.isFile()) throw new Error('not a file');
     res.writeHead(200, { 'Content-Type': MIME[extname(file)] ?? 'application/octet-stream' });
-    createReadStream(file).pipe(res);
+    const stream = createReadStream(file);
+    stream.on('error', () => res.destroy());
+    stream.pipe(res);
   } catch {
     res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
     res.end('Not Found');
