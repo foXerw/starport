@@ -588,7 +588,7 @@ export const navLinks: NavLink[] = [
 
 ```astro
 ---
-import { navLinks } from '../data/nav';
+import { navLinks, type NavLink } from '../data/nav';
 
 const groups: Array<{ key: NavLink['group']; title: string }> = [
   { key: 'main', title: '港内' },
