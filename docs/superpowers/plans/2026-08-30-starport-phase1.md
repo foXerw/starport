@@ -663,11 +663,11 @@ git commit -m "feat: hero and star-dock navigation"
 ```astro
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getEntry } from 'astro:content';
+import { getEntry, render } from 'astro:content';
 
 const about = await getEntry('about', 'about');
 if (!about) throw new Error('about entry not found');
-const { Content } = await about.render();
+const { Content } = await render(about);
 ---
 <BaseLayout title="关于我">
   <article class="max-w-2xl mx-auto px-6 py-12">
