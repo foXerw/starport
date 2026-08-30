@@ -2,8 +2,14 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import NavLinks from '../components/NavLinks.astro';
+import RecentActivity from '../components/RecentActivity.astro';
+import { getCollection } from 'astro:content';
+import { sortByDateDesc } from '../lib/essays';
+
+const essays = sortByDateDesc(await getCollection('essays', ({ data }) => !data.draft)).slice(0, 5);
 ---
 <BaseLayout title="浮星坞" description="一只狐狸守着的星港，想法在此停靠。">
   <Hero />
   <NavLinks />
+  <RecentActivity essays={essays} />
 </BaseLayout>
