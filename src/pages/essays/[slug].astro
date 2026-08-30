@@ -13,9 +13,9 @@ const { Content } = await render(essay);
 ---
 <BaseLayout title={essay.data.title} description={essay.data.description}>
   <article class="max-w-2xl mx-auto px-6 py-12">
-    <h1 class="font-display text-3xl tracking-wide text-mist-800 mb-3">{essay.data.title}</h1>
-    <time datetime={formatDate(essay.data.date)} class="text-sm text-mist-400">{formatDate(essay.data.date)}</time>
-    <div class="mt-8 leading-7 text-mist-700 space-y-4">
+    <h1 class="font-display text-3xl tracking-wide text-star mb-3">{essay.data.title}</h1>
+    <time datetime={formatDate(essay.data.date)} class="text-sm text-dusk-300">{formatDate(essay.data.date)}</time>
+    <div class="prose-dusk mt-8 leading-7 text-foam-dim space-y-4">
       <Content />
     </div>
   </article>

@@ -4,10 +4,25 @@ const nav = [
   { label: '关于我', href: '/about' },
   { label: '生活随笔', href: '/essays' },
 ];
+const path = Astro.url.pathname;
+const isHere = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
 ---
-<header class="max-w-3xl mx-auto px-6 py-8 flex items-center justify-between">
-  <a href="/" class="font-display text-lg tracking-widest text-mist-800">浮星坞</a>
-  <nav class="flex gap-5 text-sm">
-    {nav.map((i) => <a href={i.href}>{i.label}</a>)}
+<header class="mx-auto flex max-w-3xl items-center justify-between px-6 py-7">
+  <a href="/" class="font-display text-lg tracking-[0.3em] text-star transition-colors hover:text-lamp">浮星坞</a>
+  <nav class="flex items-center text-sm">
+    {nav.map((i, idx) => (
+      <Fragment>
+        {idx > 0 && <span class="px-1 text-[9px] text-dusk-500 select-none" aria-hidden="true">✦</span>}
+        <a
+          href={i.href}
+          class:list={[
+            'px-2 py-1 transition-colors',
+            isHere(i.href) ? 'text-lamp' : 'text-foam-dim hover:text-lamp',
+          ]}
+        >
+          {i.label}
+        </a>
+      </Fragment>
+    ))}
   </nav>
 </header>

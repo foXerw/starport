@@ -12,18 +12,20 @@ const groups: Array<{ key: NavLink['group']; title: string }> = [
     const items = navLinks.filter((l) => l.group === g.key);
     if (items.length === 0) return null;
     return (
-      <div class="mb-6">
-        <h2 class="text-xs uppercase tracking-widest text-mist-400 mb-3">{g.title}</h2>
+      <div class="mb-7">
+        <h2 class="mb-3 flex items-center gap-2 text-xs tracking-[0.25em] text-dusk-300">
+          <span class="text-lamp" aria-hidden="true">✦</span>{g.title}
+        </h2>
         <div class="grid gap-3 sm:grid-cols-2">
           {items.map((l) => (
             <a
               href={l.href}
               target={l.external ? '_blank' : undefined}
               rel={l.external ? 'noopener' : undefined}
-              class="block rounded-lg border border-mist-200 bg-white/60 px-4 py-3 hover:border-fox/40 transition-colors"
+              class="block rounded-lg border border-dusk-700 bg-dusk-900/70 px-4 py-3 transition-colors hover:border-lamp/60 hover:shadow-[0_0_28px_-10px_rgba(255,202,122,0.4)]"
             >
-              <span class="font-medium text-mist-800">{l.label}</span>
-              {l.description && <span class="ml-2 text-xs text-mist-400">{l.description}</span>}
+              <span class="font-medium text-foam">{l.label}</span>
+              {l.description && <span class="ml-2 text-xs text-dusk-300">{l.description}</span>}
             </a>
           ))}
         </div>

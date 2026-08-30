@@ -1,33 +1,85 @@
 @import "tailwindcss";
 
 @theme {
-  --color-mist-50: #f6f8fb;
-  --color-mist-100: #ecf1f7;
-  --color-mist-200: #dbe4ee;
-  --color-mist-300: #bcc9d9;
-  --color-mist-400: #96a9c0;
-  --color-mist-500: #7489a6;
-  --color-mist-600: #5c708c;
-  --color-mist-700: #4b5b74;
-  --color-mist-800: #404d61;
-  --color-mist-900: #384252;
+  --color-dusk-950: #14122b;
+  --color-dusk-900: #1c1a38;
+  --color-dusk-800: #2c2a5e;
+  --color-dusk-700: #3a3063;
+  --color-dusk-600: #4a3a6e;
+  --color-dusk-500: #6b5a92;
+  --color-dusk-300: #a99cc9;
+  --color-lamp: #ffca7a;
+  --color-ember: #f0914e;
+  --color-star: #ffe9b0;
   --color-fox: #d97757;
-  --color-star: #e0b95a;
+  --color-foam: #f3ead7;
+  --color-foam-dim: #b8ac93;
   --font-display: "Noto Serif SC", "Songti SC", "STSong", serif;
   --font-body: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 
-:root { color-scheme: light; }
+:root { color-scheme: dark; }
 
 body {
   font-family: var(--font-body);
-  color: var(--color-mist-900);
-  background-color: var(--color-mist-50);
+  color: var(--color-foam);
+  background-color: var(--color-dusk-950);
   background-image:
-    radial-gradient(1200px 600px at 15% -10%, rgba(224,185,90,0.08), transparent 60%),
-    radial-gradient(900px 500px at 90% 0%, rgba(116,137,166,0.10), transparent 55%);
+    radial-gradient(1.5px 1.5px at 11% 16%, rgba(255, 233, 176, 0.4), transparent),
+    radial-gradient(1px 1px at 37% 6%, rgba(255, 255, 255, 0.35), transparent),
+    radial-gradient(1.5px 1.5px at 64% 22%, rgba(255, 233, 176, 0.3), transparent),
+    radial-gradient(1px 1px at 86% 9%, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(1px 1px at 22% 42%, rgba(255, 255, 255, 0.18), transparent),
+    radial-gradient(1px 1px at 78% 51%, rgba(255, 233, 176, 0.16), transparent),
+    radial-gradient(1000px 460px at 50% 112%, rgba(240, 145, 78, 0.07), transparent 62%);
   background-attachment: fixed;
 }
 
-a { color: var(--color-mist-700); }
-a:hover { color: var(--color-fox); }
+a { color: var(--color-foam-dim); }
+a:hover { color: var(--color-lamp); }
+
+::selection { background: rgba(255, 202, 122, 0.28); }
+
+:focus-visible {
+  outline: 2px solid var(--color-lamp);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* 暮色星坞的场景动效：星闪、灯晃、船浮 */
+@keyframes star-twinkle { 0%, 100% { opacity: 0.35; } 50% { opacity: 1; } }
+@keyframes lamp-flicker { 0%, 100% { opacity: 1; } 42% { opacity: 0.72; } 60% { opacity: 0.95; } }
+@keyframes boat-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+
+.scene-twinkle { animation: star-twinkle 3s ease-in-out infinite; }
+.scene-flicker { animation: lamp-flicker 3.2s ease-in-out infinite; }
+.scene-bob { animation: boat-bob 4.6s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .scene-twinkle, .scene-flicker, .scene-bob { animation: none; }
+  * { transition-duration: 0.01ms !important; }
+}
+
+/* 随笔 / 关于我正文（Markdown 渲染区） */
+.prose-dusk h2, .prose-dusk h3 {
+  font-family: var(--font-display);
+  color: var(--color-star);
+  letter-spacing: 0.08em;
+  margin-top: 1.2em;
+}
+.prose-dusk a { color: var(--color-lamp); text-decoration: underline dotted; text-underline-offset: 3px; }
+.prose-dusk a:hover { color: var(--color-star); }
+.prose-dusk blockquote {
+  border-left: 2px solid var(--color-lamp);
+  padding-left: 1em;
+  color: var(--color-foam-dim);
+}
+.prose-dusk code {
+  background: var(--color-dusk-800);
+  border-radius: 4px;
+  padding: 0.15em 0.4em;
+  font-size: 0.9em;
+}
+.prose-dusk ul, .prose-dusk ol { padding-left: 1.4em; }
+.prose-dusk li::marker { color: var(--color-lamp); }
+.prose-dusk hr { border-color: var(--color-dusk-700); }

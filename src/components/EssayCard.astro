@@ -5,10 +5,10 @@ interface Props { essay: CollectionEntry<'essays'> }
 const { essay } = Astro.props;
 const { title, description, date } = essay.data;
 ---
-<a href={`/essays/${essay.id}/`} class="block rounded-lg border border-mist-200 bg-white/60 px-5 py-4 hover:border-fox/40 transition-colors">
+<a href={`/essays/${essay.id}/`} class="block rounded-lg border border-dusk-700 bg-dusk-900/70 px-5 py-4 transition-colors hover:border-lamp/60 hover:shadow-[0_0_28px_-10px_rgba(255,202,122,0.4)]">
   <div class="flex items-baseline justify-between gap-3">
-    <span class="font-medium text-mist-800">{title}</span>
-    <time datetime={formatDate(date)} class="text-xs text-mist-400 shrink-0">{formatDate(date)}</time>
+    <span class="font-medium text-foam">{title}</span>
+    <time datetime={formatDate(date)} class="text-xs text-dusk-300 shrink-0">{formatDate(date)}</time>
   </div>
-  {description && <p class="mt-1 text-sm text-mist-500">{description}</p>}
+  {description && <p class="mt-1 text-sm text-dusk-300">{description}</p>}
 </a>

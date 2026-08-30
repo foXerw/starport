@@ -1,8 +1,127 @@
 ---
 ---
-<section class="max-w-3xl mx-auto px-6 pt-16 pb-12 text-center">
-  <div class="text-6xl mb-6" aria-hidden="true">🦊</div>
-  <h1 class="font-display text-4xl md:text-5xl tracking-widest text-mist-800">浮星坞</h1>
-  <p class="mt-4 text-mist-600">一只狐狸守着的星港，想法在此停靠。</p>
-  <p class="mt-2 text-sm text-mist-400">foxerw.com · 星星是内容，坞是容器</p>
+<section class="relative h-[430px] overflow-hidden md:h-[520px]">
+  <svg
+    class="absolute inset-0 h-full w-full"
+    viewBox="0 0 720 300"
+    preserveAspectRatio="xMidYMax slice"
+    role="img"
+    aria-label="暮色星坞：星空下的木栈桥、系灯的帆船与守候的狐狸"
+  >
+    <defs>
+      <linearGradient id="hero-sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2c2a5e"/>
+        <stop offset=".45" stop-color="#8a5f9e"/>
+        <stop offset=".78" stop-color="#e8926f"/>
+        <stop offset="1" stop-color="#ffd9a0"/>
+      </linearGradient>
+      <linearGradient id="hero-sea" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#4a3a6e"/>
+        <stop offset="1" stop-color="#241f45"/>
+      </linearGradient>
+      <radialGradient id="hero-lamp" r="1">
+        <stop offset="0" stop-color="#ffd98a" stop-opacity=".9"/>
+        <stop offset="1" stop-color="#ffd98a" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+
+    <rect width="720" height="205" fill="url(#hero-sky)"/>
+    <rect y="205" width="720" height="95" fill="url(#hero-sea)"/>
+    <rect y="197" width="720" height="9" fill="#ffd9a0" opacity=".22"/>
+
+    <!-- stars -->
+    <g fill="#fff">
+      <circle cx="40" cy="26" r="1.6" class="scene-twinkle"/>
+      <circle cx="84" cy="60" r="1"/>
+      <circle cx="128" cy="18" r="1.2"/>
+      <circle cx="176" cy="44" r="1.4" class="scene-twinkle" style="animation-delay:.5s"/>
+      <circle cx="222" cy="14" r="1"/>
+      <circle cx="268" cy="52" r="1.2"/>
+      <circle cx="312" cy="24" r="1.5" class="scene-twinkle" style="animation-delay:1.1s"/>
+      <circle cx="356" cy="66" r="1"/>
+      <circle cx="398" cy="16" r="1.1"/>
+      <circle cx="446" cy="112" r="1.3" class="scene-twinkle" style="animation-delay:.3s"/>
+      <circle cx="488" cy="12" r="1"/>
+      <circle cx="534" cy="118" r="1.2"/>
+      <circle cx="576" cy="20" r="1.5" class="scene-twinkle" style="animation-delay:.8s"/>
+      <circle cx="622" cy="46" r="1"/>
+      <circle cx="666" cy="14" r="1.2" class="scene-twinkle" style="animation-delay:1.5s"/>
+      <circle cx="700" cy="58" r="1"/>
+      <circle cx="150" cy="84" r="1"/>
+      <circle cx="560" cy="126" r="1"/>
+    </g>
+
+    <!-- fox constellation 狐・座 -->
+    <g stroke="#ffe9b0" stroke-width=".7" opacity=".75" fill="none">
+      <path d="M450 70 L472 56 L492 68 L516 52 L536 70" stroke-dasharray="2.5 3"/>
+      <path d="M472 56 L480 38 M516 52 L508 34"/>
+    </g>
+    <g fill="#ffe9b0">
+      <circle cx="450" cy="70" r="2"/>
+      <circle cx="472" cy="56" r="2.4"/>
+      <circle cx="492" cy="68" r="2"/>
+      <circle cx="516" cy="52" r="2.6"/>
+      <circle cx="536" cy="70" r="2"/>
+    </g>
+    <text x="493" y="90" font-size="7" fill="#ffe9b0" opacity=".8" text-anchor="middle" letter-spacing="2">狐・座</text>
+
+    <!-- water shimmer -->
+    <g stroke="#ffb87a" stroke-width="1" opacity=".5" fill="none">
+      <path d="M30 220 h40 M100 234 h30 M180 222 h44 M260 240 h34 M340 226 h40 M430 244 h30 M510 230 h44 M600 246 h36 M660 224 h30"/>
+      <path d="M70 262 h36 M240 268 h30 M420 264 h40 M580 270 h34" opacity=".5"/>
+    </g>
+
+    <!-- pier -->
+    <g fill="#33263f">
+      <rect x="0" y="193" width="290" height="10"/>
+      <rect x="0" y="190" width="290" height="2" fill="#513c5e"/>
+      <rect x="20" y="203" width="7" height="34"/>
+      <rect x="70" y="203" width="7" height="30"/>
+      <rect x="130" y="203" width="7" height="36"/>
+      <rect x="190" y="203" width="7" height="28"/>
+      <rect x="250" y="203" width="7" height="32"/>
+    </g>
+
+    <!-- pier lamp -->
+    <rect x="96" y="146" width="3" height="47" fill="#241a30"/>
+    <circle cx="97.5" cy="141" r="5" fill="#ffca7a" class="scene-flicker"/>
+    <circle cx="97.5" cy="141" r="15" fill="url(#hero-lamp)"/>
+    <line x1="97.5" y1="208" x2="97.5" y2="240" stroke="#ffca7a" stroke-width="1" opacity=".3" stroke-dasharray="2 3"/>
+
+    <!-- bollard -->
+    <rect x="238" y="178" width="5" height="15" rx="2" fill="#241a30"/>
+
+    <!-- fox on the pier -->
+    <g fill="#1d1528">
+      <ellipse cx="205" cy="186" rx="9" ry="7"/>
+      <circle cx="205" cy="176" r="5"/>
+      <path d="M201 173 L199 166 L204 171 Z"/>
+      <path d="M209 173 L211 166 L206 171 Z"/>
+      <path d="M213 188 Q223 186 222 177 Q221 185 212 191 Z"/>
+    </g>
+
+    <!-- moored sailboat -->
+    <g class="scene-bob">
+      <path d="M446 214 Q478 226 516 214 L509 225 Q480 232 453 225 Z" fill="#2a2040"/>
+      <line x1="481" y1="214" x2="481" y2="158" stroke="#2a2040" stroke-width="2"/>
+      <path d="M481 162 L481 210 L498 210 Z" fill="#3d2f55" opacity=".9"/>
+      <circle cx="481" cy="153" r="3.4" fill="#ffca7a" class="scene-flicker" style="animation-delay:.6s"/>
+      <circle cx="481" cy="153" r="10" fill="url(#hero-lamp)"/>
+      <line x1="481" y1="232" x2="481" y2="258" stroke="#ffca7a" stroke-width="1" opacity=".3" stroke-dasharray="2 3"/>
+    </g>
+
+    <!-- distant boat -->
+    <g opacity=".8">
+      <path d="M620 210 q12 6 26 0 l-3 4 q-10 4 -20 0 z" fill="#2a2040"/>
+      <line x1="633" y1="210" x2="633" y2="192" stroke="#2a2040" stroke-width="1.4"/>
+    </g>
+  </svg>
+
+  <div class="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-dusk-950 via-dusk-950/70 to-transparent" aria-hidden="true"></div>
+  <div class="absolute inset-x-0 bottom-0">
+    <div class="mx-auto max-w-3xl px-6 pb-10">
+      <h1 class="font-display text-4xl tracking-[0.35em] text-foam md:text-5xl" style="text-shadow:0 0 24px rgba(255,202,122,.35)">浮星坞</h1>
+      <p class="mt-3 text-sm text-foam-dim md:text-base">暮色四合，星灯初上 —— 狐狸在坞口等船</p>
+    </div>
+  </div>
 </section>
