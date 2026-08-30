@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EssayCard from '../../components/EssayCard.astro';
+import { getCollection } from 'astro:content';
+import { sortByDateDesc } from '../../lib/essays';
+
+const essays = sortByDateDesc(await getCollection('essays', ({ data }) => !data.draft));
+---
+<BaseLayout title="生活随笔" description="浮星坞里漂着的生活随笔。">
+  <section class="max-w-2xl mx-auto px-6 py-12">
+    <h1 class="font-display text-3xl tracking-widest text-mist-800 mb-8">生活随笔</h1>
+    <div class="space-y-3">
+      {essays.length === 0
+        ? <p class="text-mist-400">还没有随笔。</p>
+        : essays.map((e) => <EssayCard essay={e} />)}
+    </div>
+  </section>
+</BaseLayout>

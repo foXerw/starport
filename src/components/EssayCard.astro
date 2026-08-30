@@ -1,0 +1,14 @@
+---
+import { formatDate } from '../lib/essays';
+import type { CollectionEntry } from 'astro:content';
+interface Props { essay: CollectionEntry<'essays'> }
+const { essay } = Astro.props;
+const { title, description, date } = essay.data;
+---
+<a href={`/essays/${essay.id}/`} class="block rounded-lg border border-mist-200 bg-white/60 px-5 py-4 hover:border-fox/40 transition-colors">
+  <div class="flex items-baseline justify-between gap-3">
+    <span class="font-medium text-mist-800">{title}</span>
+    <time datetime={formatDate(date)} class="text-xs text-mist-400 shrink-0">{formatDate(date)}</time>
+  </div>
+  {description && <p class="mt-1 text-sm text-mist-500">{description}</p>}
+</a>
