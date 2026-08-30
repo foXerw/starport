@@ -231,8 +231,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 - [ ] **Step 7: 安装依赖**
 
 ```bash
-npm install astro @astrojs/rss @astrojs/sitemap zod
-npm install -D tailwindcss @tailwindcss/vite vitest typescript @astrojs/check
+npm install astro@^5 @astrojs/rss @astrojs/sitemap zod
+npm install -D tailwindcss @tailwindcss/vite vitest "typescript@^6" @astrojs/check
 ```
 
 - [ ] **Step 8: 验证构建**
