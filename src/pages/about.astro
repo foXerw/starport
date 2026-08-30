@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getEntry, render } from 'astro:content';
+
+const about = await getEntry('about', 'about');
+if (!about) throw new Error('about entry not found');
+const { Content } = await render(about);
+---
+<BaseLayout title="关于我">
+  <article class="max-w-2xl mx-auto px-6 py-12">
+    <h1 class="font-display text-3xl tracking-widest text-mist-800 mb-6">{about.data.title}</h1>
+    <div class="leading-7 text-mist-700 space-y-4">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>
